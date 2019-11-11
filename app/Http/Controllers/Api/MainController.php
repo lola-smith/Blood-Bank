@@ -217,4 +217,66 @@ class MainController extends Controller
 
         ]);
     }
+     
+    public function updateNotificationSettings(Request $request)
+    {
+        $governoratesIds = $request->user()->governorates()->sync($request->governorates);
+        $blood_types_Ids = $request->user()->bloodTypes()->sync($request->bloodTypes);
+
+        return responseJson(1,'success',[
+
+            'governoratesIds'=>$governoratesIds,
+            'blood_type_Ids'=>$blood_types_Ids,
+
+
+
+        ]);
+    }
+
+ 
+
+    public function myFavourits(Request $request)
+    {
+        $posts = $request->user()->posts()->pluck('posts.id')->toArray();
+
+        return responseJson(1,'success',[
+
+            'posts'=>$posts,
+            
+
+
+
+        ]);
+    }
+
+
+    public function toggleFavourits(Request $request)
+    {
+        $posts = $request->user()->posts()->toggle($request->posts);
+
+        return responseJson(1,'success',[
+
+            'posts'=>$posts,
+            
+
+
+
+        ]);
+    }
+
+
+
+    public function unreadNotificationCount(Request $request)
+    {
+        $unread_notification = $request->user()->posts()->pluck('posts.id')->where('posts.is_read','=',0)->count();
+
+        return responseJson(1,'success',[
+
+            'unread_notification'=>$unread_notification,
+            
+
+
+
+        ]);
+    }
 }

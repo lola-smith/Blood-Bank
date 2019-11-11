@@ -46,12 +46,15 @@ Route::group([
         Route::get('donation-orders', 'MainController@donationOrders');
         Route::get('donation-order', 'MainController@donationOrder');
         Route::get('notifications', 'MainController@notifications');
-        Route::get('get-notification-settings', 'MainController@getNotificationSettings');
+        Route::get('get-notification-settings','MainController@getNotificationSettings');
+        Route::get('my-favourits','MainController@myFavourits');
+        Route::get('unread-notification-count','MainController@unreadNotificationCount');
+        Route::post('toggle-favourits', 'MainController@toggleFavourits');
 
-        Route::post('create-donation-order', 'MainController@createDonationOrder');
+        Route::post('create-donation-order','MainController@createDonationOrder');
         Route::get('post', 'MainController@post');
         Route::post('profile', 'AuthController@profile');
-        Route::post('profile', 'AuthController@profile');
+        Route::post('update-notification-settings','MainController@updateNotificationSettings');
 
     });
 });

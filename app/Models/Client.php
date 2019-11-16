@@ -27,6 +27,11 @@ class Client extends Authenticatable
         return $this->hasMany('App\Models\DonationOrder');
     }
 
+    public function tokens()
+    {
+        return $this->hasMany('App\Models\Token');
+    }
+
     public function posts()
     {
         return $this->morphedByMany('App\Models\Post', 'clientable');

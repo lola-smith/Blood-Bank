@@ -13,7 +13,7 @@ class CreateClientablesTable extends Migration {
 			$table->integer('client_id')->unsigned();
 			$table->integer('clientable_id');
 			$table->string('clientable_type');
-			$table->boolean('is_read');
+			$table->boolean('is_read')->default(0);
 		});
 	}
 

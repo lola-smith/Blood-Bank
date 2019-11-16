@@ -54,6 +54,10 @@ Route::group([
         Route::post('create-donation-order','MainController@createDonationOrder');
         Route::get('post', 'MainController@post');
         Route::post('profile', 'AuthController@profile');
+         
+        Route::post('register-notification-token','AuthController@registerNotificationToken');
+        Route::post('remove-notification-token','AuthController@removeNotificationToken');
+
         Route::post('update-notification-settings','MainController@updateNotificationSettings');
 
     });

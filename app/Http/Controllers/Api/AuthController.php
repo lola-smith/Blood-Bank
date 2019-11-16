@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
+use App\Models\Token;
 use App\Mail\ResetPassowrd;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -194,6 +195,41 @@ public function profile(Request $request){
 }
 
 
+public function registerNotificationToken(Request $request){
+    $validator=validator()->make($request->all(),[
+        'token'=>'required',
+       'type'=>'required|in:android,ios',
 
+        // return $request->all( );
+
+    ]);
+    if($validator->fails()){
+       return responseJson(0,$validator->errors()->first(),$validator->errors());
+
+
+    }
+     
+    Token::where('token',$request->token)->delete();//بمسحو علشان ميكونشي مربوط بأي يوزر تاني علشان بردو مع كل لوجن يكريت توكن تاني
+    $request->user()->tokens()->create($request->all());
+    //dd($request->user()->tokens);
+    return responseJson(1,'success');
+}
+
+
+
+
+public function removeNotificationToken(Request $request){
+    $validator=validator()->make($request->all(),[
+        'token'=>'required',
+
+    ]);
+    if($validator->fails()){
+       return responseJson(0,$validator->errors()->first(),$validator->errors());
+
+
+    }
+    Token::where('token',$request->token)->delete();//بمسحو علشان ميكونشي مربوط بأي يوزر تاني علشان بردو مع كل لوجن يكريت توكن تاني
+    return responseJson(1,'deleted success');
+}
 
 }

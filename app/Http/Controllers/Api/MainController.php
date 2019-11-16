@@ -13,6 +13,7 @@ use App\Models\Category;
 use App\Models\Contact;
 use App\Models\BloodType;
 use App\Models\Setting;
+use App\Models\Token;
 use App\Models\donationOrder;
 use App\Models\Notification;
 
@@ -177,14 +178,62 @@ class MainController extends Controller
    
         }
        
-        $donation_order=DonationOrder::create($request->all( ));
-        $donation_order->save();
-        return responseJson(1,'you orderd sucessfully',[
-   
-           
-           'donatiOnorder'=>$donation_order,
-        ]);
+        //$donation_order=DonationOrder::create($request->all( ));
+
+        $donation_order=$request->user()->donationOrders()->create($request->all( ));
+
+
+        $clientsIds=$donation_order->city->governorate->clients()
+        ->whereHas('bloodtypes',function($q) use ($request,$donation_order) {
+
+            $q->where('blood_types.id',$donation_order->blood_type_id);
+        })->pluck('clients.id')->toArray();
+
+
+         // dd($clientsIds);
+         $send="";
+
+       if(count($clientsIds)){
+// هوا قال علاقه النوتيفيكاشن بالدوناشن اوردر وان تو ون و بعدين دلوقتي عاملها ميني تو ميني 
+          $notification=$donation_order->notification()->create([
+          'title'=>' احتاج متبرع لفصيلة',
+          //'content'=>$request->user()->name.'محتاج متبرع لفصيلة'
+          'content'=>$donation_order->bloodType->name.'محتاج متبرع لفصيلة'
+
+          ]);
+          $notification->clients()->attach($clientsIds);
+          $tokens=Token::whereIn('client_id',$clientsIds)->where('token','!=',null)->pluck('token')->toArray();
+       // dd($tokens);
+
+        //   $tokens=$client->tokens()->where('token','!=','')->whereIn('client_id',$clientsIds)->pluck('token')->toArray();
+       
+
+          if(count($tokens)){
+              
+        $title=$notification->title;
+        $body=$notification->content;
+        $data=[
+            
+            'donation_order_id'=>$donation_order->id,
+        ];
+
+        // info(json_encode($data));
+
+        $send=notifyByFirebase($title,$body,$tokens,$data);
+        // info($send);
+        //info("firebase result".$send);
+         //$send=json_encode($send);
+        //   }
+
+
+
        }
+
+        //$donation_order->save();
+       
+       }
+       return responseJson(1,'add sucessfully',$send);
+    }
 
 
 
@@ -221,7 +270,7 @@ class MainController extends Controller
     public function updateNotificationSettings(Request $request)
     {
         $governoratesIds = $request->user()->governorates()->sync($request->governorates);
-        $blood_types_Ids = $request->user()->bloodTypes()->sync($request->bloodTypes);
+        $blood_types_Ids = $request->user()->bloodTypes()->sync($request->bloodtypes);
 
         return responseJson(1,'success',[
 
@@ -279,4 +328,9 @@ class MainController extends Controller
 
         ]);
     }
+
+
+
+
+    
 }

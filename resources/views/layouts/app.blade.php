@@ -73,6 +73,7 @@
               <li class="user-footer">
                   
                 <div class="pull-right">
+                  
                   <a href="#" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
@@ -105,18 +106,38 @@
         
         <li class="treeview">
           <a href="#">
-            <i class="fa fa-dashboard"></i> <span>posts</span>
+            <i class="fa fa-clipboard"></i> <span>Category</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+          <li><a href="{{url(route('category.index'))}}"><i class="fa fa-circle-o"></i> category</a></li>
             <li><a href="../../index.html"><i class="fa fa-circle-o"></i> posts</a></li>
-            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> category</a></li>
+            
           </ul>
         </li>
-        <li><a href="{{url(route('governorate.index'))}}"><i class="fa fa-globe"></i> <span>Governorate</span></a></li>
-        <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>setting</span></a></li>
+
+
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-globe"></i> <span>Governorate</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+          <li><a href="{{url(route('governorate.index'))}}"><i class="fa fa-circle-o"></i> <span>Governorate</span></a></li>
+            <li><a href="{{url(route('city.index'))}}"><i class="fa fa-circle-o"></i> <span>City</span></a></li>
+          </ul>
+        </li>
+
+
+
+        
+        
+        <li><a href="{{url(route('setting.index'))}}"><i class="fa fa-book"></i> <span>setting</span></a></li>
         
       </ul>
     </section>

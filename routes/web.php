@@ -23,3 +23,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('governorate', 'GovernorateController');
+Route::resource('category', 'CategoryController');
+Route::resource('setting', 'SettingController');
+Route::resource('city', 'CityController');

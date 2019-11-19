@@ -2,7 +2,7 @@
 
 
 @section('page_title')
-Governorates
+City
 
 @endsection
 
@@ -22,7 +22,7 @@ Governorates
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">list of governorates</h3>
+          <h3 class="box-title">list of cities</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -33,7 +33,7 @@ Governorates
           </div>
         </div>
         <div class="box-body">
-      <a href="{{url(route('governorate.create'))}}" class="btn btn-primary"><i class="fa fa-plus"></i> New Governorate</a>
+      <a href="{{url(route('city.create'))}}" class="btn btn-primary"><i class="fa fa-plus"></i> New city</a>
      <br>
      <br>
      @include('flash::message')
@@ -44,7 +44,8 @@ Governorates
       <thead>
       <tr>
       <th>#</th>
-      <th>Name</th>
+      <th>Governorate Name</th>
+      <th>City Name</th>
       <th>Edit</th>
       <th>Delete</th>
       </tr>
@@ -55,11 +56,12 @@ Governorates
 
       <tr>
       <td>{{$loop->iteration}}</td>
+      <td>{{$record->governorate->name}}</td>
       <td>{{$record->name}}</td>
-      <td class="text-center"> <a href="{{url(route('governorate.edit',$record->id))}}" class="btn btn-success btn-xs"> <i class="fa fa-edit"></i></a></td>
+      <td class="text-center"> <a href="{{url(route('city.edit',$record->id))}}" class="btn btn-success btn-xs"> <i class="fa fa-edit"></i></a></td>
       <td class="text-center">
       {!! Form::open([
-        'action' => ['GovernorateController@destroy',$record->id],
+        'action' => ['CityController@destroy',$record->id],
         'method' => 'delete'
       ])!!}
 

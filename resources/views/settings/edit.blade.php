@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@inject('model','App\Models\Governorate')
+
 
 @section('page_title')
-Create Governorates
+Edit setting
 
 @endsection
 
@@ -22,7 +22,7 @@ Create Governorates
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Create governorates</h3>
+          <h3 class="box-title">Edit Settings</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -33,9 +33,14 @@ Create Governorates
           </div>
         </div>
         <div class="box-body">
-        {!! Form::model($model, ['action' => 'GovernorateController@store']) !!}
 
+        {!! Form::model($model, [
+        'action' => ['SettingController@update',$model->id],
+        'method' => 'put'
+        
+        ]) !!}
 
+        @include('flash::message')
         @include('partials.validation_errors ')
 
         @include('governorates.form')

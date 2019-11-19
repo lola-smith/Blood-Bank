@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Governorate;
+use App\Models\Category;
 
-class GovernorateController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,8 @@ class GovernorateController extends Controller
      */
     public function index()
     {
-        $records=Governorate::paginate(20);
-        return view('governorates.index',compact('records'));
-    }
+        $records=Category::paginate(20);
+        return view('categories.index',compact('records'));    }
 
     /**
      * Show the form for creating a new resource.
@@ -25,7 +24,7 @@ class GovernorateController extends Controller
      */
     public function create()
     {
-        return view('governorates.create');
+        return view('categories.create');
     }
 
     /**
@@ -36,26 +35,20 @@ class GovernorateController extends Controller
      */
     public function store(Request $request)
     {
-       // dd($request->all());
-       $rules=[
-       'name'=>'required'
-       ];
-
-       $messages=[
-        'name.required'=>'Name is required'
-    ];
-    $this->validate($request,$rules,$messages);
-    //dd("here");
-    // $records=new Governorate;
-    // $records->name=$request->input('name');
-    // $records->save();
-    //للاختصار ممكن اعمل التلات سطور في سطر واحد 
-    $records=Governorate::create($request->all());
-    //return back();
-    flash()->success("success");// لاظهار الرسائل
-
-    return redirect(route('governorate.index'));
-
+        $rules=[
+            'name'=>'required'
+            ];
+     
+            $messages=[
+             'name.required'=>'Name is required'
+         ];
+         $this->validate($request,$rules,$messages);
+         
+         $records=Category::create($request->all());
+         
+         flash()->success("success");// لاظهار الرسائل
+     
+         return redirect(route('category.index'));
     }
 
     /**
@@ -77,9 +70,8 @@ class GovernorateController extends Controller
      */
     public function edit($id)
     {
-        
-        $model=Governorate::findOrFail($id);
-        return view('governorates.edit',compact('model'));
+        $model=Category::findOrFail($id);
+        return view('categories.edit',compact('model'));
     }
 
     /**
@@ -91,11 +83,11 @@ class GovernorateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $record=Governorate::findOrFail($id);
+        $record=Category::findOrFail($id);
         $record->update($request->all());
         flash()->success("success Edited");
-        //return back();//this function like redirect() but in the same page
-        return redirect(route('governorate.index'));
+      
+        return redirect(route('category.index'));
     }
 
     /**
@@ -106,10 +98,9 @@ class GovernorateController extends Controller
      */
     public function destroy($id)
     {
-        $record=Governorate::findOrFail($id);
+        $record=Category::findOrFail($id);
         $record->delete();
         flash()->success("successfully deleted");
         return back(); 
-        //return redirect(route('governorate.index'));
     }
 }

@@ -2,7 +2,7 @@
 
 
 @section('page_title')
-Governorates
+Setting
 
 @endsection
 
@@ -22,7 +22,7 @@ Governorates
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">list of governorates</h3>
+          <h3 class="box-title">list of settings</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -33,9 +33,7 @@ Governorates
           </div>
         </div>
         <div class="box-body">
-      <a href="{{url(route('governorate.create'))}}" class="btn btn-primary"><i class="fa fa-plus"></i> New Governorate</a>
-     <br>
-     <br>
+     
      @include('flash::message')
      <br>
     @if(count($records))
@@ -43,10 +41,10 @@ Governorates
       <table class="table table-bordered">
       <thead>
       <tr>
-      <th>#</th>
+      
       <th>Name</th>
       <th>Edit</th>
-      <th>Delete</th>
+      
       </tr>
       </thead>
 
@@ -54,19 +52,10 @@ Governorates
       @foreach($records as $record)
 
       <tr>
-      <td>{{$loop->iteration}}</td>
-      <td>{{$record->name}}</td>
-      <td class="text-center"> <a href="{{url(route('governorate.edit',$record->id))}}" class="btn btn-success btn-xs"> <i class="fa fa-edit"></i></a></td>
-      <td class="text-center">
-      {!! Form::open([
-        'action' => ['GovernorateController@destroy',$record->id],
-        'method' => 'delete'
-      ])!!}
-
-      <button type="submit" class="btn btn-danger btn-xs"> <i class="fa fa-trash-o"></i></button>
       
-      {!!Form::close()!!}
-      </td>
+      <td>{{$record->name}}</td>
+      <td class="text-center"> <a href="{{url(route('setting.edit',$record->id))}}" class="btn btn-success btn-xs"> <i class="fa fa-edit"></i></a></td>
+    
       </tr>
 
       @endforeach

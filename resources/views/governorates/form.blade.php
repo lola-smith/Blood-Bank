@@ -1,4 +1,3 @@
-{!! Form::model($model, ['action' => 'GovernorateController@store']) !!}
 
 <div class="form-group">
  <label for="name">Name</label>

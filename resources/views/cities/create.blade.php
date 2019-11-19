@@ -1,8 +1,8 @@
 @extends('layouts.app')
-@inject('model','App\Models\Governorate')
-
+@inject('model','App\Models\City')
+@inject('gov','App\Models\Governorate')
 @section('page_title')
-Create Governorates
+Create city
 
 @endsection
 
@@ -22,7 +22,7 @@ Create Governorates
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">Create governorates</h3>
+          <h3 class="box-title">Create cities</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -33,12 +33,12 @@ Create Governorates
           </div>
         </div>
         <div class="box-body">
-        {!! Form::model($model, ['action' => 'GovernorateController@store']) !!}
+        {!! Form::model($model, ['action' => 'CityController@store']) !!}
 
 
         @include('partials.validation_errors ')
 
-        @include('governorates.form')
+        @include('cities.form')
 
          {!! Form::close() !!} 
 

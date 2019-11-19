@@ -2,7 +2,7 @@
 
 
 @section('page_title')
-Governorates
+Category
 
 @endsection
 
@@ -22,7 +22,7 @@ Governorates
       <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
-          <h3 class="box-title">list of governorates</h3>
+          <h3 class="box-title">list of categories</h3>
 
           <div class="box-tools pull-right">
             <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
@@ -33,7 +33,7 @@ Governorates
           </div>
         </div>
         <div class="box-body">
-      <a href="{{url(route('governorate.create'))}}" class="btn btn-primary"><i class="fa fa-plus"></i> New Governorate</a>
+      <a href="{{url(route('category.create'))}}" class="btn btn-primary"><i class="fa fa-plus"></i> New category</a>
      <br>
      <br>
      @include('flash::message')
@@ -56,10 +56,10 @@ Governorates
       <tr>
       <td>{{$loop->iteration}}</td>
       <td>{{$record->name}}</td>
-      <td class="text-center"> <a href="{{url(route('governorate.edit',$record->id))}}" class="btn btn-success btn-xs"> <i class="fa fa-edit"></i></a></td>
+      <td class="text-center"> <a href="{{url(route('category.edit',$record->id))}}" class="btn btn-success btn-xs"> <i class="fa fa-edit"></i></a></td>
       <td class="text-center">
       {!! Form::open([
-        'action' => ['GovernorateController@destroy',$record->id],
+        'action' => ['CategoryController@destroy',$record->id],
         'method' => 'delete'
       ])!!}
 

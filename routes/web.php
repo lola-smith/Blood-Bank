@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
 // Route::get('/home', function () {
 //     return view('home');
@@ -26,3 +26,11 @@ Route::resource('governorate', 'GovernorateController');
 Route::resource('category', 'CategoryController');
 Route::resource('setting', 'SettingController');
 Route::resource('city', 'CityController');
+Route::resource('post', 'PostController');
+Route::resource('client', 'ClientController');
+Route::resource('contact', 'ContactController');
+Route::resource('donation', 'DonationController');
+Route::resource('editpassword', 'EditPasswordController');
+Route::get('editpassword', 'ChangePasswordController@index')->name('editpassword');
+Route::post('editpassword', 'ChangePasswordController@changeAdminPassword');
+// Route::post('editpassword', 'EditPasswordController@');

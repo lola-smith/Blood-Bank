@@ -43,7 +43,7 @@ Edit setting
         @include('flash::message')
         @include('partials.validation_errors ')
 
-        @include('governorates.form')
+        @include('settings.form')
 
          {!! Form::close() !!} 
 

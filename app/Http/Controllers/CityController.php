@@ -43,7 +43,7 @@ class CityController extends Controller
      
             $messages=[
              'name.required'=>'Name is required',
-             'governorate_id.required'=>'Name is required',
+             'governorate_id.required'=>'governorate is required',
              
          ];
          $this->validate($request,$rules,$messages);

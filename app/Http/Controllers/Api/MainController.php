@@ -165,7 +165,7 @@ class MainController extends Controller
             'city_id'=>'required',
             'hospital_address'=>'required',
             'patient_phone'=>'required',
-            'client_id'=>'required',
+            // 'client_id'=>'required',
             'notes'=>'required',
             'longitude'=>'required',
             'latitude'=>'required',

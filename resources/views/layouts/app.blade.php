@@ -56,7 +56,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{asset('adminlte/img/user2-160x160.jpg')}}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{auth()->user()->name}}</span>
+              <span class="hidden-xs">{{optional(auth()->user())->name}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -64,17 +64,27 @@
                 <img src="{{asset('adminlte/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
 
                 <p>
-                  {{auth()->user()->name}}
+                {{optional(auth()->user())->name}}
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
              
               <!-- Menu Footer-->
               <li class="user-footer">
-                  
+              <div class="pull-left">
+                  <a href="{{url(route('editpassword'))}}" class="btn btn-default btn-flat">edit Password</a>
+                </div>
                 <div class="pull-right">
-                  
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <a class="dropdown-item btn btn-default btn-flat" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"  >
+                                        @csrf
+                                    </form>
+                  <!-- <a href="#" class="btn btn-default btn-flat">Sign out</a> -->
                 </div>
               </li>
             </ul>
@@ -96,7 +106,7 @@
           <img src="{{asset('adminlte/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>{{auth()->user()->name}}</p>
+          <p>  {{optional(auth()->user())->name}}</p>
           
         </div>
       </div>
@@ -113,7 +123,7 @@
           </a>
           <ul class="treeview-menu">
           <li><a href="{{url(route('category.index'))}}"><i class="fa fa-circle-o"></i> category</a></li>
-            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> posts</a></li>
+            <li><a href="{{url(route('post.index'))}}"><i class="fa fa-circle-o"></i> posts</a></li>
             
           </ul>
         </li>
@@ -136,8 +146,11 @@
 
 
         
+        <li><a href="{{url(route('client.index'))}}"><i class="fa fa-users"></i> <span>Client</span></a></li>
+        <li><a href="{{url(route('contact.index'))}}"><i class="fa fa-envelope"></i> <span>Contact</span></a></li>
+        <li><a href="{{url(route('donation.index'))}}"><i class="fa fa-users"></i> <span>Donation</span></a></li>
         
-        <li><a href="{{url(route('setting.index'))}}"><i class="fa fa-book"></i> <span>setting</span></a></li>
+        <li><a href="{{url(route('setting.index'))}}"><i class="fa fa-book"></i> <span>Setting</span></a></li>
         
       </ul>
     </section>

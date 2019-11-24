@@ -61,7 +61,14 @@ class AuthController extends Controller
         }
         $client =Client::where('phone',$request->phone)->first();
 
-       if($client){
+       if($client && $client->is_activate==true){
+
+
+        // if ($request->has('is_active')) {
+        //     $request->user()->where('is_active','=',0)
+        //  }
+
+
         if (Hash::check($request->password,$client->password)) {
             return responseJson(1,'you login sucessfully',[
 

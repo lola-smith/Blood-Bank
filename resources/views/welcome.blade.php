@@ -71,15 +71,27 @@
                         <a href="{{ url('/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('clienthome.login') }}">Login client</a>
+                        <!-- <button class="btn login" onclick= "window.location.href = '{{ route('clienthome.login') }}'">Login</button> -->
 
                         <!-- @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a> -->
-                        @endif
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif -->
                     @endauth
                 </div>
             @endif
+            <div class="container">
+            <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+            <div class="panel">
+            @component('components.who')
+            @endcomponent
+            </div>
+            </div>
+            </div>
+            </div>
 
-            <div class="content">
+            <!-- <div class="content">
                 <div class="title m-b-md">
                     Blood Bank
                 </div>
@@ -93,7 +105,7 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
                 </div>
-            </div>
+            </div> -->
         </div>
     </body>
 </html>

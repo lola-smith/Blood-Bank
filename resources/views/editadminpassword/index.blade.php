@@ -52,7 +52,7 @@ password
  
 </div>
 <div class="form-group">
- <label for="name">confirm</label>
+ <label for="name">confirme</label>
 
  {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
  

@@ -60,7 +60,7 @@ class AuthController extends Controller
    
         }
         $client =Client::where('phone',$request->phone)->first();
-
+       
        if($client && $client->is_activate==true){
 
 

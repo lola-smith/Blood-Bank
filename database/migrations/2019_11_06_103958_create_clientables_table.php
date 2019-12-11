@@ -14,6 +14,7 @@ class CreateClientablesTable extends Migration {
 			$table->integer('clientable_id');
 			$table->string('clientable_type');
 			$table->boolean('is_read')->default(0);
+			$table->boolean('is_favourite')->default(0);
 		});
 	}
 

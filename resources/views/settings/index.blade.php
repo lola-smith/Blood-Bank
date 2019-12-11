@@ -151,10 +151,13 @@ Setting
  <!-- {!! Form::text('whatsup_num',null, ['class' => 'form-control']) !!} -->
  
 </div>
-<div class="form-group text-center">
-<h3> <label for="name">about_app</label></h3>
+
+
+ <div class="form-group text-center">
+<h3> <label for="name">intro</label></h3>
  
- <label for="name">{{$record->about_app}}</label>
+ <label for="name">{{$record->intro}}</label>
+
 
  <!-- {!! Form::text('about_app',null, ['class' => 'form-control']) !!} -->
  
@@ -175,6 +178,16 @@ Setting
  <!-- {!! Form::text('app_store_url',null, ['class' => 'form-control']) !!} -->
  
 </div>
+
+<div class="form-group text-center">
+<h3> <label for="name">about_app</label></h3>
+ 
+ <label for="name">{{$record->about_app}}</label>
+
+ <div class="form-group text-center">
+<h3> <label for="name">who_text</label></h3>
+ 
+ <label for="name">{{$record->who_text}}</label>
 
 <div class="form-group text-center">
  <h3><label for="name">notification_settings_text</label></h3>

@@ -43,46 +43,12 @@ class ChangePasswordController extends Controller
                      $user->save();
                     
                  }
-                 flash()->success("success Edited");
-        //return back();//this function like redirect() but in the same page
-       return redirect()->to('/home');
 
-        //  if(Auth::Check())
-        //    {
-        //      $request_data = $request->All();
-        //      $validator = $this->validate($request,$rules,$messages);
-        //      if($validator->fails()){
-        //         return responseJson(0,$validator->errors()->first(),$validator->errors());
-        
-        
-        //      }
-        //      else
-        //      {  
-        //        $current_password = Auth::User()->password;           
-        //        if(Hash::check($request_data['current-password'], $current_password))
-        //        {           
-        //          $user_id = Auth::User()->id;                       
-        //          $obj_user = User::find($user_id);
-                 
-        //          $obj_user->password = $request->merge(['password'=>bcrypt($request->password)]);
-        //          $obj_user->save(); 
-        //          return back(); 
-        //        }
-        //        else
-        //        {           
-        //          $error = array('current-password' => 'Please enter correct current password');
-        //          return response()->json(array('error' => $error), 400);   
-        //        }
-        //      }        
-        //    }
-        //    else
-        //    {
-              
-        //      return view('editadminpassword.index');
-        //      // return back(); 
-        //     // return redirect()->to('/');
-        //    }    
-         
+                 flash()->success("success change");
+        //return back();//this function like redirect() but in the same page
+                return redirect()->to('/editpassword');
+
+      
     } 
 
 

@@ -45,10 +45,12 @@
  {!! Form::text('whatsup_num',null, ['class' => 'form-control']) !!}
  
 </div>
-<div class="form-group">
- <label for="name">about_app</label>
 
- {!! Form::text('about_app',null, ['class' => 'form-control']) !!}
+
+<div class="form-group">
+ <label for="name">intro</label>
+
+ {!! Form::text('intro',null, ['class' => 'form-control']) !!}
  
 </div>
 <div class="form-group">
@@ -61,6 +63,19 @@
  <label for="name">app_store_url</label>
 
  {!! Form::text('app_store_url',null, ['class' => 'form-control']) !!}
+ 
+</div>
+
+<div class="form-group">
+ <label for="name">about_app</label>
+
+ {!! Form::textarea('about_app',null, ['class' => 'form-control']) !!}
+ 
+</div>
+<div class="form-group">
+ <label for="name">who_text</label>
+
+ {!! Form::textarea('who_text',null, ['class' => 'form-control']) !!}
  
 </div>
 

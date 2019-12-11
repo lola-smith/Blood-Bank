@@ -75,7 +75,7 @@
                   <a href="{{url(route('editpassword'))}}" class="btn btn-default btn-flat">edit Password</a>
                 </div>
                 <div class="pull-right">
-                <a class="dropdown-item btn btn-default btn-flat" href="{{ route('logout') }}"
+                <!-- <a class="dropdown-item btn btn-default btn-flat" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
@@ -83,8 +83,9 @@
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"  >
                                         @csrf
-                                    </form>
-                  <!-- <a href="#" class="btn btn-default btn-flat">Sign out</a> -->
+                                    </form> -->
+                  <a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
+                  <!-- <a href="{{ route('clienthome.logout') }}" class="btn btn-default btn-flat">Sign out</a> -->
                 </div>
               </li>
             </ul>
@@ -151,7 +152,11 @@
         <li><a href="{{url(route('donation.index'))}}"><i class="fa fa-users"></i> <span>Donation</span></a></li>
         
         <li><a href="{{url(route('setting.index'))}}"><i class="fa fa-book"></i> <span>Setting</span></a></li>
-        
+
+
+        <li><a href="{{url(route('user.index'))}}"><i class="fa fa-users"></i> <span>Users</span></a></li>
+        <li><a href="{{url(route('role.index'))}}"><i class="fa fa-list"></i> <span>Role</span></a></li>
+
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -400,5 +405,6 @@
     $('.sidebar-menu').tree()
   })
 </script>
+@stack('scripts')
 </body>
 </html>

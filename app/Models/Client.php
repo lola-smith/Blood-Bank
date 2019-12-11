@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-
-    use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Client extends Authenticatable
-{
-
+{ 
+    use Notifiable;
+    protected $guard='client';
     protected $table = 'clients';
     public $timestamps = true;
     protected $fillable = array('phone', 'email', 'blood_type_id', 'password', 'name', 'dob', 'pin_code', 'city_id', 'last_donation_date','is_activate');

@@ -10,6 +10,6 @@
     <!-- Who End -->
 @endsection
 @section('login')
-<button class="btn signup" onclick= "window.location.href = 'signup.html';">New Account</button>
+<button class="btn signup" onclick= "window.location.href = 'signup.html';">my profile</button>
  <button class="btn login" onclick= "window.location.href = '{{ route('clienthome.login') }}'">Login</button>
  @endsection

@@ -1,30 +1,44 @@
 @extends('front.master')
 @section('content')
-@inject('model','App\Models\Client)
+@inject('model','App\Models\DonationOrder)
     <!-- Sign Up Start -->
     <section id="sign-up">
         <div class="container">
         @include('flash::message')
         @include('partials.validation_errors ')
                 <img src="{{asset('front/imgs/logo.png')}}" alt="">
-                {!! Form::model($model, ['action' => 'Front\AuthController@registerSave']) !!}
-               <!-- <div class="form-group"> -->
+                {!! Form::model($model, ['action' => 'Front\MainController@creatDonationSave']) !!}
                
 
-                {!! Form::text('name',null,['class' => 'form-control','placeholder' => 'name']) !!}
+                {!! Form::text('patient_name',null,['class' => 'form-control','placeholder' => 'name']) !!}
  
-                <!-- </div> -->
-                <!-- <div class="form-group"> -->
+               
 
-                {!! Form::text('email',null, ['class' => 'form-control','placeholder' => 'email']) !!}
+                {!! Form::text('patient_age',null, ['class' => 'form-control','placeholder' => 'age']) !!}
 
-                {!! Form::password('password',null, ['class' => 'form-control','placeholder' => 'password']) !!}
-                {!! Form::password('password_confirmation',null, ['class' => 'form-control','placeholder' => 'password_confirmation']) !!}
-                 <!-- </div> -->
+               
+                {!! Form::text('bags_number',null,['class' => 'form-control','placeholder' => 'bags number']) !!}
+ 
+               
 
-                <!-- <div class="form-group"> -->
+                {!! Form::text('hospital_name',null, ['class' => 'form-control','placeholder' => 'hospital name']) !!}
+  
+
+
+                {!! Form::text('hospital_address',null,['class' => 'form-control','placeholder' => 'gov-city-st-bil']) !!}
+ 
+               
+
+                {!! Form::text('patient_phone',null, ['class' => 'form-control','placeholder' => 'phone']) !!}
+
+            
+                {!! Form::text('notes',null, ['class' => 'form-control','placeholder' => 'notes']) !!}
+                {!! Form::text('longitude',null, ['class' => 'form-control','placeholder' => 'longitude']) !!}
+                {!! Form::text('latitude',null, ['class' => 'form-control','placeholder' => 'latitude']) !!}
+
+
                 
-                {!! Form::text('dob',null, ['class' => 'form-control','placeholder' => 'Birth date']) !!}
+               
                
  
                    <!-- </div> -->
@@ -56,28 +70,8 @@
                         
                         
                         ]) !!}
-                    <!-- <select name="Gov" id="Gov" required="">
-                        <option value="Governorate" disabled>Governorate</option>
-                        <option value="A">Alexandria</option>
-                        <option value="B">Cairo</option>
-                        <option value="O">Giza</option>
-                        <option value="AB+">Fayoum</option>
-                    </select> -->
-                    <!-- <input type="Phone" placeholder="Phone Number" required="">
-                    <input type="date" name="donate-day"> -->
-                    <!-- <div class="form-group"> -->
-                    {!! Form::text('phone',null, ['class' => 'form-control','placeholder' => 'phone']) !!}
-
-                 <!-- </div> -->
-
-                <!-- <div class="form-group"> -->
-                
-                {!! Form::text('last_donation_date',null, ['class' => 'form-control','placeholder' => 'donate date']) !!}
-                
- 
-                   <!-- </div> -->
+                  
                     <div class="reg-group">
-                        <input class="check" type="checkbox" required="" style="height: auto; display:inline; margin: 0 auto;">Agree on terms and conditions<br>
                         <button class="submit" type="submit" style="background-color: rgb(51, 58, 65);">Submit</button>
                     </div>
                     {!! Form::close() !!} 

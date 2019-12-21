@@ -1,13 +1,12 @@
 @extends('front.master')
 @section('content')
-@inject('model','App\Models\Client)
     <!-- Sign Up Start -->
     <section id="sign-up">
         <div class="container">
         @include('flash::message')
         @include('partials.validation_errors ')
                 <img src="{{asset('front/imgs/logo.png')}}" alt="">
-                {!! Form::model($model, ['action' => 'Front\AuthController@registerSave']) !!}
+                {!! Form::model($model, ['action' => 'Front\MainController@updateProfile']) !!}
                <!-- <div class="form-group"> -->
                
 

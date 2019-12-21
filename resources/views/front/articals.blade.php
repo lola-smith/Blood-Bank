@@ -3,54 +3,25 @@
 <!-- article Start -->
 <section id="article">
         <div class="container">
-        <img src="{{asset($record->image)}}" class="img-responsive head-img">
-            <!-- <img class="head-img" src="{{$record->title}}" alt=""> -->
-            <div class="details-container">
-                <div class="title">
-                    
-                <i class="fas fa-heart icon-large float-left
-                                {{$record->is_favourite ? 'second-heart':'first-heart'}}" onclick= "toggleFavourite(this)" id="{{$record->id}}"></i>
-                {{$record->title}}</div>
-                <p>
-                {{$record->body}}
-                </p>
-                <strong><a>Share this article:</a></strong>
-
-                <div class="icons">
-                                <a href="{{$settings->fb_link}}"><i
-                            class="fab fa-facebook-square fa-2x"></i></a>
-                            
-                            <a href="{{$settings->tw_link}}"><i
-                            class="fab fa-twitter-square fa-2x"></i></a>
-
-                            <a href="{{$settings->tw_link}}"><i
-                            class="fab fa-google-plus-square fa-2x"></i></a>
-
-                                </div>
-                <!-- <div class="icons">
-                    <i class="fab fa-facebook-square fa-3x"></i>
-                    <i class="fab fa-google-plus-square fa-3x"></i>
-                    <i class="fab fa-twitter-square fa-3x"></i>
-                </div> -->
-
-            </div>
+       
 
     <!-- Articles Start -->
     <section id="articles">
         <div class="container">
             <h2 style="display: inline-block;">Articles</h2>
-            <div class="swiper-container">
+            <!-- <div class="swiper-container"> -->
             <div class="button-area" style="display: inline-block; margin-left: 850px;">
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
+                    <!-- <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div> -->
                 </button>
             </div>
-
-                <div class="swiper-wrapper">
+            <div class="row">
+                <!-- <div class="swiper-wrapper"> -->
 
                    @foreach($posts as $post)
-                   <div class="swiper-slide">
-                        <div class="card">
+                   <!-- <div class="swiper-slide"> -->
+                    <div class="clo-md-6 offset-md-2" >
+                        <div class="card ">
                             <div class="card-img-top" style="position: relative;">
                                 <img src="{{asset($post->image)}}" alt="Card image">
                                 <!-- <i onclick= "toggleFavourite(this)" id="{{$post->id}}"  class="fas fa-heart icon-large first-heart"></i> -->
@@ -66,10 +37,12 @@
                                 </div>
                             </div>
                         </div>
+                        <br>
                     </div>
                     
                    @endforeach
             </div>
+        </div>
         </div>
     </section>
     <!-- Articles End -->

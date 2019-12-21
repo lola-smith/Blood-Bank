@@ -23,9 +23,23 @@ Route::post('toggle-favourite', 'MainController@toggleFavourite')->name('toggle-
 
 Route::get('about', 'MainController@about')->name('about');
 Route::get('artical/{id}', 'MainController@artical')->name('artical');
+Route::get('profile', 'MainController@getProfile')->name('profile');
+Route::post('profile', 'MainController@updateProfile')->name('profile');
+Route::get('articals', 'MainController@articals')->name('articals');
+Route::get('favourite-articals', 'MainController@favouriteArticals')->name('favourite.articals');
+Route::get('donations', 'MainController@donations')->name('donations');
+Route::get('donation-details/{id}', 'MainController@donation')->name('donations.details');
 Route::get('who-we-are', 'MainController@whoWeAre')->name('who-we-are');
 Route::get('contact-us', 'MainController@contactUs')->name('contact-us');
 Route::post('contact-us', 'MainController@contactUsSave')->name('contact-us');
+
+// Route::get('reset-password', 'AuthController@getResetPassword')->name('reset.password');
+// Route::post('reset-password', 'AuthController@resetPassword')->name('reset.password');
+// Route::get('new-password', 'AuthController@getNewPassword')->name('new.password');
+// Route::post('new-password', 'AuthController@newPassword')->name('new.password');
+
+Route::get('creat-donation', 'MainController@getCreatDonation')->name('creat.donation');
+Route::post('creat-donation', 'MainController@creatDonationSave')->name('creat.donation');
 
 // Route::get('toggle-favourite', 'ClientfrontController@toggleFavourite')->name('toggle-favourite');
 // });
@@ -62,5 +76,10 @@ Route::get('admin/logout', 'Auth\LoginController@adminLogout')->name('admin.logo
     Route::get('/clienthome/logout', 'Auth\ClientLoginController@logout')->name('clienthome.logout');
     Route::get('client-register', 'Front\AuthController@register');
 Route::post('client-register', 'Front\AuthController@registerSave');
+
+Route::get('reset-password', 'Front\AuthController@getResetPassword')->name('reset.password');
+Route::post('reset-password', 'Front\AuthController@resetPassword')->name('reset.password');
+Route::get('new-password', 'Front\AuthController@getNewPassword')->name('new.password');
+Route::post('new-password', 'Front\AuthController@newPassword')->name('new.password');
 // });
 
